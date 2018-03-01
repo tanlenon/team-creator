@@ -74,7 +74,8 @@
 .topic-header {
    font-family: 'Roboto', sans-serif;
    color: #193441;
-   margin-bottom: 15px;
+   margin-bottom: 30px;
+   font-size: 30px;
 }
 
 /*---------------------------------------FORM------------------------------------------*/
@@ -190,4 +191,26 @@ input[type=text] {
 
 .controls {
     margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.player-list {
+  margin: 10px;
+  padding: 10px;
+  border: 1px;
+}
+
+.delete-button {
+  background-color: #3E606F;
+  color: white;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.row {
+  margin: 50px 0;
 }

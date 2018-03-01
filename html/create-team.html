@@ -35,11 +35,12 @@
 
     <div class="content-container container">
 
-      <h4 class="topic-header">Create Your Team!</h4>
 
       <div class="row">
 
         <form class="left-side col-12 col-md-6" id="create-team-form">
+
+          <h4 class="topic-header">Create Your Team!</h4>
 
           <div class="form-group">
             <label for="usr">Team Name:</label>
@@ -71,12 +72,10 @@
               <option>Vollyball</option>
             </select>
           </div>
-
-          <input type="submit" id="teamSubmit" class="btn btn-info" value="Search" disabled>
           
         </form>
 
-        <div id="app1" class="right-side col-12 col-md-6">
+        <div id="editTeam" class="right-side col-12 col-md-6">
           <div class="padding center image-and-colors">
             <h2 id="name-header" class="topic-header">{{name}}</h2>
             <div id="show-color-1"></div>
@@ -89,7 +88,7 @@
       </div>
       <div class="row">
 
-        <div id="app2" class="offset-3 col-6">
+        <div id="playerList" class="col-12 col-md-6">
 
           <h4 class="topic-header">Add Players</h4>
 
@@ -101,28 +100,21 @@
             <button type="submit">Add</button>
           </form>
 
-          <div class="controls">
-            <button v-on:click="showAll()">Show All</button>
-            <button v-on:click="showActive()">Show Active</button>
-            <button v-on:click="showCompleted()">Show Completed</button>
-            <button v-on:click="deleteCompleted()">Delete Completed</button>
-          </div>
-
-          <ul>
-            <li v-for="item in filteredTodos" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
-              <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" /><label v-bind:class="{ completed: item.completed }">{{ item.text }}</label><button v-on:click="deleteItem(item)" class="delete">X</button>
+          <ul class="player-list">
+            <li v-for="player in players" draggable="true" v-on:dragstart="dragItem(player)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+              <div class="player-list-item">
+                <h4>{{ player.text }}<span class="delete-button" v-on:click="deleteItem(player)" class="delete">Delete</span></h4>
+              </div>
             </li>
           </ul>
         </div>
 
+
       </div>
+
+      <input type="submit" id="teamSubmit" class="btn btn-info" value="Submit" disabled>
+
     </div>
-
-
-
-
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
