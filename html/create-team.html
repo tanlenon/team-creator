@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Team Creator</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/create-team.css">
+
+       
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Our Town Sports!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="create-team.html">Create a Team <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+      </div>
+    </nav>
+
+    <div class="content-container container">
+
+      <h4 class="topic-header">Create Your Team!</h4>
+
+      <div class="row">
+
+        <form class="left-side col-12 col-md-6" id="create-team-form">
+
+          <div class="form-group">
+            <label for="usr">Team Name:</label>
+            <input type="text" v-on:input="name = $event.target.value" class="form-control" id="team-name">
+          </div>
+
+          <div class="form-group">
+            <label for="usr">Team Color 1:</label>
+            <input type="text" readonly="true" class="jscolor {onFineChange:'update(this,1)'}" value="000" id="colorChoice1" >
+          </div>
+
+          <div class="form-group">
+            <label for="usr">Team Color 2:</label>
+            <input type="text" readonly="true" class="jscolor {onFineChange:'update(this,2)'}" value="00F" id="colorChoice2">
+          </div>
+
+          <div class="form-group">
+            <label for="usr">Team Logo:</label>
+            <input type="file" id="img-file-input" name="pic" accept="image/*">
+          </div>
+
+          <div class="form-group">
+            <label for="usr">Sport:</label>
+            <select class="form-control" data-show-icon="true">
+              <option>Basketball</option>
+              <option> Baseball</option>
+              <option>Football</option>
+              <option>Soccer</option>
+              <option>Vollyball</option>
+            </select>
+          </div>
+
+          <input type="submit" id="teamSubmit" class="btn btn-info" value="Search" disabled>
+          
+        </form>
+
+        <div id="app1" class="right-side col-12 col-md-6">
+          <div class="padding center image-and-colors">
+            <h2 id="name-header" class="topic-header">{{name}}</h2>
+            <div id="show-color-1"></div>
+            <div id="show-color-2"></div>
+            <div id="show-logo">
+              <img src="../img/lions.jpg" id="loaded-logo">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div id="app2" class="offset-3 col-6">
+
+          <h4 class="topic-header">Add Players</h4>
+
+          <form v-on:submit.prevent="addItem">
+            <label for="player-name">Player Name:</label>
+            <input class="form-control" id="player-name" type="text" v-model="playerName"><br/>
+            <label for="position">Position:</label>
+            <input class="form-control" id="position" type="text" v-model="position"><br/>
+            <button type="submit">Add</button>
+          </form>
+
+          <div class="controls">
+            <button v-on:click="showAll()">Show All</button>
+            <button v-on:click="showActive()">Show Active</button>
+            <button v-on:click="showCompleted()">Show Completed</button>
+            <button v-on:click="deleteCompleted()">Delete Completed</button>
+          </div>
+
+          <ul>
+            <li v-for="item in filteredTodos" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+              <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" /><label v-bind:class="{ completed: item.completed }">{{ item.text }}</label><button v-on:click="deleteItem(item)" class="delete">X</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../js/jscolor.js"></script>
+    <script src="../js/create-team.js"></script>
+    <script>
+    function update(jscolor,num) {
+        document.getElementById('show-color-' + num).style.backgroundColor = '#' + jscolor;
+    }
+    </script>
+
+    </div>
+
+  </body>
+
+  <footer>
+    <p>Copyright &copy; 2018</p>
+    <p>Github Repository - <a href="https://github.com/tanlenon/creative2">Creative Project 2 - tlenon</a></p>
+  </footer> 
+
+</html>

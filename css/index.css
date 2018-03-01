@@ -1,0 +1,72 @@
+/*Color Scheme
+#FCFFF5 - Almost White
+#CBDBD7 - Light Blue
+#91AAB4 - Medium Blue
+#3E606F - Dark Blue
+#193441 - Darker Blue*/
+
+
+/*---------------------------------------NAVBAR------------------------------------------*/
+
+
+.bg-light {
+	background-color: #91AAB4 !important;
+}
+
+.nav-link {
+	color: white !important;
+	text-align: center !important;
+}
+
+.active .nav-link{
+	background-color: white !important;
+	color: #193441 !important;
+}
+
+.navbar-light .navbar-brand {
+	color: white !important;
+}
+
+
+
+/*---------------------------------------CONTENT------------------------------------------*/
+
+
+body { 
+  background: url(../img/players.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+/*---------------------------------------FOOTER------------------------------------------*/
+
+
+footer {
+   background-color: #3E606F;
+   color: #91AAB4;
+   margin-top: 15px;
+   padding: 20px;
+   text-align: center;
+   font-family: 'Roboto', sans-serif;
+}
+
+footer a {
+    color: #CBDBD7;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer a:hover {
+	color: #FCFFF5;;
+}
+
+footer { 
+   position:absolute;
+   bottom:0;
+   width: 100%;
+}
+
+
+/*---------------------------------------------------------------------------------------*/
